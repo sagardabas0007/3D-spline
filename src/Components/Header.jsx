@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FiGithub, FiTwitter, FiLinkedin, FiMenu, FiX } from "react-icons/fi";
 import { useState } from "react";
 
@@ -183,7 +183,8 @@ const Header = () => {
               </motion.div>
               
 
-              {/* Contact form */}
+              {/* Contact form here we used animatepresence to make sure our exit animaton worked */}
+              <AnimatePresence> 
               {contactFormOpen && (
                   <div
                       initial={{ opacity: 0 }}
@@ -196,6 +197,7 @@ const Header = () => {
                       <motion.div
                           initial={{ opacity: 0, scale: 0.8, y: 30 }}
                           animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity:0, scale:0.8, y:30 }}
                           transition={{
                               delay: 0.3,
                               duration:0.7
@@ -229,7 +231,8 @@ const Header = () => {
                       </form>
                       </motion.div>
                   </div>
-              )}
+                  )}
+                  </AnimatePresence>
       </header>
     </div>
   );
